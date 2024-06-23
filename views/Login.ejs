@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div class="card" style="border-radius: 20px;">
+                        <h3 class="text-center mt-2">Login</h3>
+                        <div class="card-body">
+                            <form action"" method="post">
+                                <div class="form-group">
+                                    <label for>Email</label>
+                                    <% if (emailError) {%>
+                                        <p style="color: red;">
+                                            <%= emailError %>
+                                        </p>
+                                        <% } else if ( error ) { %>
+                                            <p style="color: red;">
+                                                <%= error %>
+                                            </p>
+                                            <% }%>
+                                                <input type="text" class="form-control" name="email"
+                                                    placeholder="Masukan Email Anda">
+                                </div>
+                                <div class="form-group">
+                                    <label for>Password</label>
+                                    <% if (passError) {%>
+                                        <p style="color: red;">
+                                            <%= passError %>
+                                        </p>
+                                        <% }%>
+
+                                            <input type="password" class="form-control" name="password" id="password"
+                                                placeholder="Masukan Password Anda">
+                                            <span class="password-toggle-icon"><i class="fas fa-eye"></i> Show
+                                                Password</span>
+
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-success">Login</button>
+
+                                <div class="text-center">
+                                    <span class="txt1">
+                                        Tidak punya Akun?
+                                    </span>
+
+                                    <a class="txt2" style="color: green; text-decoration:none" href="/register">
+                                        Register
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script>
+            const passwordField = document.getElementById("password");
+            const togglePassword = document.querySelector(".password-toggle-icon i");
+
+            togglePassword.addEventListener("click", function () {
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    togglePassword.classList.remove("fa-eye");
+                    togglePassword.classList.add("fa-eye-slash");
+                } else {
+                    passwordField.type = "password";
+                    togglePassword.classList.remove("fa-eye-slash");
+                    togglePassword.classList.add("fa-eye");
+                }
+            });
+        </script>
+</body>
+
+</html>

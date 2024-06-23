@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content />
+    <meta name="author" content />
+    <title>Gozak</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- <link href="../styles.css" rel="stylesheet" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <%- include('partials/navbarButton') %>
+
+        <!-- <form class="mt-5">
+            <select name="Status">
+                <option disabled selected>--Choose Status--</option>
+                <option>Sukses</option>
+                <option>Menunggu Driver</option>
+                <option>Reject</option>
+            </select>
+            <label for="Commander"><button type="submit">Filter</button></label>
+        </form> -->
+        <a href="/customerView/<%=userid%>/history"><button class="mt-5 mb-3 btn btn-success">
+                History
+            </button></a>
+
+        <% if(destination) {%>
+            <p class="mt-5" style="color: red;">Orderan dengan tujuan <%= destination %> telah berhasil di cancel!</p>
+            <% } %>
+
+                </form>
+
+                <table class="table table-hover mt-5">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Destination</th>
+                            <th>Ongkos</th>
+                            <th>Nama Driver</th>
+                            <th>Type Services</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach((e)=> {%>
+                            <% e.Orders.forEach((el)=> {%>
+                                <% if(el.Status=='Menunggu Driver' ) {%>
+
+                                    <tr>
+                                        <td>
+                                            <%= el.getOrderDate %>
+                                        </td>
+                                        <td>
+                                            <%= el.destination %>
+                                        </td>
+                                        <td>
+                                            <%= formatCurrency(el.Service.fare) %>
+                                        </td>
+
+                                        <% driver.forEach((e)=> {%>
+                                            <% if(e.id==el.DriverId){%>
+                                                <td>
+                                                    <%= e.UserProfile.fullName %>
+                                                </td>
+                                                <% }else{%>
+                                                    <%}%>
+                                                        <% })%>
+
+                                                            <td>
+                                                                <%= el.Service.name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= el.Status %>
+                                                            </td>
+                                                            <% if(el.Status=='Menunggu Driver' ) {%>
+                                                                <td>
+                                                                    <a
+                                                                        href="/customerView/<%= userid %>/delete/<%= el.id %>">
+                                                                        <button>
+                                                                            Cancel
+                                                                        </button>
+                                                                    </a>
+                                                                </td>
+                                                                <%}else if(el.Status=='Reject' ){%>
+                                                                    <td>
+                                                                        <a>
+                                                                            <span>
+                                                                                <p>
+                                                                                    Harap Pesan Kembali
+                                                                                </p>
+                                                                            </span>
+                                                                        </a>
+                                                                    </td>
+                                                                    <% }else if(el.Status=='Sukses' ){%>
+                                                                        <td>
+                                                                            <a>
+                                                                                <span>
+                                                                                    <p>
+                                                                                        Pesanan Selesai
+                                                                                    </p>
+                                                                                </span>
+                                                                            </a>
+                                                                        </td>
+                                                                        <%}%>
+                                    </tr>
+                                    <%}else{%>
+                                        <% }%>
+                                            <%})%>
+                                                <% })%>
+
+                    </tbody>
+                </table>
+</body>

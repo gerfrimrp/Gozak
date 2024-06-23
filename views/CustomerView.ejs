@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content />
+        <meta name="author" content />
+        <title>Gozak</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+            rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- <link href="../styles.css" rel="stylesheet" /> -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    </head>
+    <body>
+        
+        <%- include('partials/navbarButton') %>
+
+        <section class="bg-light py-5 border-buttom">
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder" style="color: green;"
+                        id="services">Halo Selamat Datang Di Gozak, <span style="color: black;">
+                            <%= user.fullName %>
+                        </span></h2>
+                    <h2 class="fw-bolder mt-5" style="color: green;"
+                        id="services">Services By
+                        Gozak</h2>
+                    <!-- <p class="lead mb-0">With our no hassle pricing plans</p> -->
+                </div>
+                <div class="row gx-5 gp-6  justify-content-center">
+                    <!-- Pricing card free-->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="card mb-5 mb-xl-0"
+                            style="border-radius: 30px;">
+                            <div class="card-body p-5">
+                                <div class="mb-3">
+                                    <h3 style="color: green;">CarZak</h3>
+                                </div>
+                                <div>
+                                    <img
+                                        src="data:image/jpeg;base64,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"
+                                        alt style="width: 100px;">
+                                </div>
+                                <p>Layanan Services Mobil</p>
+                                <p>Tarif: 10.000/km</p>
+                                <p>Pokoknya cepat sampe, DIkawal Polisi</p>
+                                <div class="d-grid"><a class="btn btn-success"
+                                        href="/customerView/<%= userid %>/formOrderCarzak?id=1&name=CarZak">Order</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pricing card pro-->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="card mb-5 mb-xl-0"
+                            style="border-radius: 30px;">
+                            <div class="card-body p-5">
+                                <div class="mb-3">
+                                    <h3 style="color: green;">RideZak</h3>
+                                </div>
+                                <div>
+                                    <img
+                                        src="https://image.made-in-china.com/202f0j00HiEkzGOIIucT/Cheap-Electric-Motorbike-Kids-Battery-Powered-Motorcycle-Baby-Toys-Bike-Kids-Electric-Motorcycle.webp"
+                                        alt style="width: 100px;">
+                                </div>
+                                <p>Layanan Services Motor</p>
+                                <p>Tarif: 5.000</p>
+                                <p>Pokoknya cepat sampe, Anti rem</p>
+                                <div class="d-grid"><a class="btn btn-success"
+                                        href="/customerView/<%= userid %>/formOrderRidezak?id=2&name=RideZak">Order</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pricing card enterprise-->
+                </div>
+            </div>
+        </section>
+    </body>
